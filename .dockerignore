@@ -1,0 +1,9 @@
+.dockerignore
+.drone.yml
+.git
+.gitignore
+
+Dockerfile
+docker-compose.yml
+LICENSE
+README.md
