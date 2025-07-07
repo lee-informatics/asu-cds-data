@@ -25,7 +25,7 @@
             "priority": 0
         },
         {
-            "file": "data/practitpractitionerInformation1743038526721.json",
+            "file": "data/practitionerInformation1743038526721.json",
             "load": true,
             "loader": "fhir-bundle",
             "name": "Synthea Practioner Bundle",
