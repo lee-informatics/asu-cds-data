@@ -41,6 +41,42 @@
             "description": "Synthetic patient record from SHARES study.",
             "type": "Patient Bundle",
             "priority": 10
+        },
+        {
+            "file": "public/data/Aaron697_Ryan260_9f2ef891-739a-fd21-eb28-49159483f9cf.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Patient Synthea R5 - Aaron697_Ryan260",
+            "description": "Synthetic patient record from WMM Project.",
+            "type": "Patient Bundle",
+            "priority": 10
+        },
+        {
+            "file": "public/data/Agnus790_Romaine793_Wiegand701_872ffd71-5646-b0b6-9e3e-d35ee6e20f1b.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Patient Synthea R5 - Agnus790_Romaine793_Wiegand701",
+            "description": "Synthetic patient record from WMM Project.",
+            "type": "Patient Bundle",
+            "priority": 10
+        },
+        {
+            "file": "public/data/Dakota806_Hegmann834_1c2eb354-d800-404a-d393-0c802c4e581f.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Patient Synthea R5 - Dakota806_Hegmann834",
+            "description": "Synthetic patient record from WMM Project.",
+            "type": "Patient Bundle",
+            "priority": 10
+        },
+        {
+            "file": "public/data/Dori98_Bailey598_b93b0a92-648f-55aa-8841-ce863b9c21a5.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Patient Synthea R5 - Dori98_Bailey598",
+            "description": "Synthetic patient record from WMM Project.",
+            "type": "Patient Bundle",
+            "priority": 10
         }
     ]
 }
