@@ -52,15 +52,6 @@
             "priority": 10
         },
         {
-            "file": "public/data/Agnus790_Romaine793_Wiegand701_872ffd71-5646-b0b6-9e3e-d35ee6e20f1b.json",
-            "load": true,
-            "loader": "fhir-bundle",
-            "name": "Patient Synthea R5 - Agnus790_Romaine793_Wiegand701",
-            "description": "Synthetic patient record from WMM Project.",
-            "type": "Patient Bundle",
-            "priority": 10
-        },
-        {
             "file": "public/data/Dakota806_Hegmann834_1c2eb354-d800-404a-d393-0c802c4e581f.json",
             "load": true,
             "loader": "fhir-bundle",
