@@ -34,6 +34,26 @@
             "priority": 1
         },
         {
+            "file": "data/hospitalInformation1744683719203.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Synthea Organization Bundle",
+            "description": "Synthea-generated Organization records",
+            "type": "Organization Bundle",
+            "priority": 2
+
+        },
+        {
+            "file": "data/practitionerInformation1744683719203.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Synthea Practitioner Bundle",
+            "description": "Synthea-generated Practitioner records",
+            "type": "Practitioner Bundle",
+            "priority": 3
+
+        },
+        {
             "file": "data/Enoch803_Rempel203_69068937-ff52-ebc2-f140-f9ee77fad999.json",
             "load": true,
             "loader": "fhir-bundle",
