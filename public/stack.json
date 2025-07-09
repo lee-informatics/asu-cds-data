@@ -38,7 +38,7 @@
             "load": true,
             "loader": "fhir-bundle",
             "name": "Patient Synthea R5 - Enoch803_Rempel203",
-            "description": "Synthetic patient record from SHARES study.",
+            "description": "Synthetic patient record for WMM project testing.",
             "type": "Patient Bundle",
             "priority": 5
         },
@@ -47,7 +47,7 @@
             "load": true,
             "loader": "fhir-bundle",
             "name": "Patient Synthea R5 - Aaron697_Ryan260",
-            "description": "Synthetic patient record from WMM Project.",
+            "description": "Synthetic patient record for WMM project testing.",
             "type": "Patient Bundle",
             "priority": 6
         },
@@ -56,7 +56,7 @@
             "load": true,
             "loader": "fhir-bundle",
             "name": "Patient Synthea R5 - Dakota806_Hegmann834",
-            "description": "Synthetic patient record from WMM Project.",
+            "description": "Synthetic patient record for WMM project testing.",
             "type": "Patient Bundle",
             "priority": 7
         },
@@ -65,7 +65,7 @@
             "load": true,
             "loader": "fhir-bundle",
             "name": "Patient Synthea R5 - Dori98_Bailey598",
-            "description": "Synthetic patient record from WMM Project.",
+            "description": "Synthetic patient record for WMM project testing.",
             "type": "Patient Bundle",
             "priority": 8
         }
