@@ -1,6 +1,6 @@
 {
     "$schema": "https://stack.skycapp.com/stack.schema.json",
-    "title": "ASU CDS Seed Data & Stack Controller",
+    "title": "ASU CDS Synthetic Data",
     "instructions": "The included Synthea-generated data files, below, can be loaded into a FHIR R4-compliant server to replicate scripted demonstrations or to customize your own. Larger files may take several minutes to load.",
     "fhir_base_url": "http://localhost:8080/fhir",
     "driver": "hapi",
