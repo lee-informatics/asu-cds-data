@@ -1,19 +1,19 @@
 {
     "$schema": "https://stack.skycapp.com/stack.schema.json",
-    "title": "Weight Management Medication (WMM) CQL Logic, Value Sets, and Synthetic Test Data",
+    "title": "Weight Management Medication (WMM)",
     "instructions": "The included CQL logic, value sets, and Synthea-generated data files can be loaded into a FHIR R4-compliant server to replicate scripted demonstrations or customization. The patient data files are large and may take a while for your server to load and index.",
     "fhir_base_url": "http://localhost:8080/fhir",
     "driver": "hapi",
     "scenarios": [
         {
             "id": "cql-logic-and-value-sets-only",
-            "title": "CQL Logic and Value Sets Only",
-            "description": "This scenario includes only the CQL logic and FHIR value sets. Patient data files and their data dependencies are not included."
+            "name": "CQL Logic and Value Sets Only",
+            "description": "Only CQL logic and FHIR value sets. Patient data files and their data dependencies are not included."
         },
         {
             "id": "patient-data-only",
-            "title": "Patient Data Only",
-            "description": "This scenario includes only Synthea-generated FHIR Patient data Bundle files and their data dependencies. CQL Librarylogic and FHIR value sets are not included."
+            "name": "Patient Data Only",
+            "description": "Only Synthea-generated FHIR Patient data Bundle files and their data dependencies. CQL Librarylogic and FHIR value sets are not included."
         }
     ],
     "links": [
@@ -36,6 +36,7 @@
             "type": "Organization Bundle",
             "priority": 0,
             "scenarios": [
+                "default",
                 "patient-data-only"
             ]
         },
@@ -48,6 +49,7 @@
             "type": "Practitioner Bundle",
             "priority": 1,
             "scenarios": [
+                "default",
                 "patient-data-only"
             ]
         },
@@ -60,6 +62,7 @@
             "type": "Patient Bundle",
             "priority": 2,
             "scenarios": [
+                "default",
                 "patient-data-only"
             ]
         },
@@ -72,6 +75,7 @@
             "type": "Patient Bundle",
             "priority": 3,
             "scenarios": [
+                "default",
                 "patient-data-only"
             ]
         },
@@ -84,6 +88,7 @@
             "type": "Patient Bundle",
             "priority": 4,
             "scenarios": [
+                "default",
                 "patient-data-only"
             ]
         },
@@ -96,6 +101,7 @@
             "type": "Patient Bundle",
             "priority": 5,
             "scenarios": [
+                "default",
                 "patient-data-only"
             ]
         },
@@ -108,6 +114,7 @@
             "type": "Value Set",
             "priority": 6,
             "scenarios": [
+                "default",
                 "cql-logic-and-value-sets-only"
             ]
         },
@@ -120,6 +127,7 @@
             "type": "Value Set",
             "priority": 7,
             "scenarios": [
+                "default",
                 "cql-logic-and-value-sets-only"
             ]
         },
@@ -132,6 +140,7 @@
             "type": "Value Set",
             "priority": 8,
             "scenarios": [
+                "default",
                 "cql-logic-and-value-sets-only"
             ]
         },
@@ -144,6 +153,7 @@
             "type": "Value Set",
             "priority": 9,
             "scenarios": [
+                "default",
                 "cql-logic-and-value-sets-only"
             ]
         },
@@ -156,6 +166,7 @@
             "type": "Value Set",
             "priority": 10,
             "scenarios": [
+                "default",
                 "cql-logic-and-value-sets-only"
             ]
         },
@@ -168,6 +179,7 @@
             "type": "Value Set",
             "priority": 11,
             "scenarios": [
+                "default",
                 "cql-logic-and-value-sets-only"
             ]
         },
@@ -180,6 +192,7 @@
             "type": "Value Set",
             "priority": 12,
             "scenarios": [
+                "default",
                 "cql-logic-and-value-sets-only"
             ]
         },
@@ -192,6 +205,7 @@
             "type": "Value Set",
             "priority": 13,
             "scenarios": [
+                "default",
                 "cql-logic-and-value-sets-only"
             ]
         },
@@ -204,6 +218,7 @@
             "type": "Value Set",
             "priority": 14,
             "scenarios": [
+                "default",
                 "cql-logic-and-value-sets-only"
             ]
         },
@@ -216,6 +231,7 @@
             "type": "CQL Library",
             "priority": 15,
             "scenarios": [
+                "default",
                 "cql-logic-and-value-sets-only"
             ],
             "evaluate": {
