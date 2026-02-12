@@ -6,7 +6,7 @@
   "title": "Heart Failure with Preserved Ejection Fraction",
   "status": "active",
   "experimental": false,
-  "date": "2026-02-11",
+  "date": "2026-02-12",
   "publisher": "ASU CDS",
   "description": "This value set contains terms related to heart failure with preserved ejection fraction (HFpEF) and diastolic heart failure. The concept of diastolic heart failure is an older term that focuses narrowly on the mechanism of impaired ventricular relaxation during diastole. HFpEF is the newer term that more broadly encompasses diastolic dysfunction, ventricular stiffness, endothelial dysfunction, and other physiologic mechanisms that contribute to heart failure in the presence of a normal or near-normal ejection fraction. It excludes heart failure with reduced ejection fraction as well as concepts that do not specify ejection fraction.",
   "text": {

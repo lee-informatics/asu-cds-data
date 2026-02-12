@@ -6,7 +6,7 @@
   "title": "Metabolic Dysfunction-associated Steatotic Liver Disease",
   "status": "active",
   "experimental": false,
-  "date": "2026-02-11",
+  "date": "2026-02-12",
   "publisher": "ASU CDS",
   "description": "This value set contains terms related to metabolic dysfunction-associated steatotic liver disease (MASLD). It includes concepts related to nonalcoholic fatty liver disease (NAFLD) which has been renamed to MASLD. It also includes concepts related to nonalcoholic steatohepatitis (NASH) which has been renamed to metabolic dysfunction-associated steatohepatitis (MASH). MASH is a sub-category of MASLD and is also represented in a separate Metabolic Dysfunction-associated Steatohepatitis element.",
   "text": {

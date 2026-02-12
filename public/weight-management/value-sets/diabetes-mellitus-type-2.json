@@ -6,7 +6,7 @@
   "title": "Diabetes Mellitus, Type 2",
   "status": "active",
   "experimental": false,
-  "date": "2026-02-11",
+  "date": "2026-02-12",
   "publisher": "ASU CDS",
   "description": "This value set contains terms related to type 2 diabetes mellitus. It includes stand-alone type 2 diabetes mellitus terms, pre-existing type 2 diabetes in pregnancy, and type 2 diabetes mellitus with complications. It excludes terms related to type 1 diabetes mellitus, gestational diabetes, diabetes insipidus, drug/chemical-induced diabetes, and diabetes secondary to underlying conditions.",
   "text": {

@@ -1,8 +1,8 @@
 /**
  * Author: Preston Lee
  *
- * Reads terminology CSV files listed in manifest.csv and creates corresponding
- * FHIR R4 ValueSet resources in fhir/. Descriptions come from the manifest.
+ * Reads CSV files listed in manifest.csv from csvs/ and creates corresponding
+ * FHIR R4 ValueSet resources in value-sets/. Descriptions come from the manifest.
  */
 
 import * as fs from "fs";
@@ -14,8 +14,8 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.join(__dirname, "..");
 
 const MANIFEST_PATH = path.join(ROOT, "manifest.csv");
-const TERMINOLOGY_DIR = path.join(ROOT, "terminology");
-const OUTPUT_DIR = path.join(ROOT, "fhir");
+const TERMINOLOGY_DIR = path.join(ROOT, "csvs");
+const OUTPUT_DIR = path.join(ROOT, "value-sets");
 
 /** Map code system display names to FHIR code system URIs */
 const CODE_SYSTEM_URIS: Record<string, string> = {
@@ -160,7 +160,7 @@ function main(): void {
     process.exit(1);
   }
   if (!fs.existsSync(TERMINOLOGY_DIR)) {
-    console.error("Terminology directory not found:", TERMINOLOGY_DIR);
+    console.error("CSV directory not found:", TERMINOLOGY_DIR);
     process.exit(1);
   }
 

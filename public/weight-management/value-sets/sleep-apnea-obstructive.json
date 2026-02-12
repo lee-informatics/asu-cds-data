@@ -6,7 +6,7 @@
   "title": "Sleep Apnea, Obstructive",
   "status": "active",
   "experimental": false,
-  "date": "2026-02-11",
+  "date": "2026-02-12",
   "publisher": "ASU CDS",
   "description": "This value set contains terms related to obstructive sleep apnea (OSA) in adult and pediatric patients. It excludes terms related to central and mixed sleep apnea as well as conditions which may be associated with or caused by OSA (e.g., chronic respiratory failure due to obstructive sleep apnea, Xia Gibbs syndrome).",
   "text": {

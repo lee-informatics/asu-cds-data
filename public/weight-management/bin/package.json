@@ -1,12 +1,13 @@
 {
   "name": "cardiovascular-value-sets",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "create-value-sets": "tsx bin/create-fhir-value-sets.ts",
     "validate-resources": "tsx bin/validate-resources.ts",
     "code-validation-report": "tsx bin/code-validation-report.ts",
+    "bundle-value-sets": "tsx bin/bundle-value-sets.ts",
     "build": "tsc"
   },
   "devDependencies": {

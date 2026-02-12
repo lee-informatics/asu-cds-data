@@ -1,6 +1,6 @@
 /**
  * Runs the FHIR Resource $validate operation (https://hl7.org/fhir/R4/resource-operation-validate.html)
- * for each ValueSet in fhir/ using VALIDATE_URL (local validator) to report structural/field errors.
+ * for each ValueSet in value-sets/ using VALIDATE_URL (local validator) to report structural/field errors.
  *
  * Run: npx ts-node bin/validate-resources.ts
  */
@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.join(__dirname, "..");
 
-const OUTPUT_DIR = path.join(ROOT, "fhir");
+const OUTPUT_DIR = path.join(ROOT, "value-sets");
 const VALIDATE_URL = "http://localhost:8282/fhir/ValueSet/$validate";
 
 interface ValidateResult {

@@ -18,7 +18,7 @@
     ],
     "links": [
         {
-            "name": "ASU CDS Stack Controller",
+            "name": "ASU CDS FHIR Controller",
             "url": "http://localhost:4204"
         },
         {
@@ -106,7 +106,7 @@
             ]
         },
         {
-            "file": "weight-management/fhir/cardiovascular-diseases.json",
+            "file": "weight-management/bundles/cardiovascular-diseases.json",
             "load": true,
             "loader": "fhir-bundle",
             "name": "Cardiovascular Diseases",
@@ -119,7 +119,7 @@
             ]
         },
         {
-            "file": "weight-management/fhir/heart-failure-with-preserved-ejection-fraction.json",
+            "file": "weight-management/bundles/heart-failure-with-preserved-ejection-fraction.json",
             "load": true,
             "loader": "fhir-bundle",
             "name": "Heart Failure with Preserved Ejection Fraction",
@@ -132,7 +132,7 @@
             ]
         },
         {
-            "file": "weight-management/fhir/diabetes-mellitus-type-2.json",
+            "file": "weight-management/bundles/diabetes-mellitus-type-2.json",
             "load": true,
             "loader": "fhir-bundle",
             "name": "Diabetes Mellitus Type 2",
@@ -145,7 +145,7 @@
             ]
         },
         {
-            "file": "weight-management/fhir/dyslipidemia-all.json",
+            "file": "weight-management/bundles/dyslipidemia-all.json",
             "load": true,
             "loader": "fhir-bundle",
             "name": "Dyslipidemia All",
@@ -158,7 +158,7 @@
             ]
         },
         {
-            "file": "weight-management/fhir/hypertension-primary.json",
+            "file": "weight-management/bundles/hypertension-primary.json",
             "load": true,
             "loader": "fhir-bundle",
             "name": "Hypertension, Primary",
@@ -171,7 +171,7 @@
             ]
         },
         {
-            "file": "weight-management/fhir/metabolic-dysfunction-associated-steatotic-liver-disease.json",
+            "file": "weight-management/bundles/metabolic-dysfunction-associated-steatotic-liver-disease.json",
             "load": true,
             "loader": "fhir-bundle",
             "name": "Metabolic Dysfunction Associated Steatotic Liver Disease",
@@ -184,7 +184,7 @@
             ]
         },
         {
-            "file": "weight-management/fhir/metabolic-syndrome.json",
+            "file": "weight-management/bundles/metabolic-syndrome.json",
             "load": true,
             "loader": "fhir-bundle",
             "name": "Metabolic Syndrome",
@@ -197,7 +197,7 @@
             ]
         },
         {
-            "file": "weight-management/fhir/osteoarthritis.json",
+            "file": "weight-management/bundles/osteoarthritis.json",
             "load": true,
             "loader": "fhir-bundle",
             "name": "Osteoarthritis",
@@ -210,7 +210,7 @@
             ]
         },
         {
-            "file": "weight-management/fhir/sleep-apnea-obstructive.json",
+            "file": "weight-management/bundles/sleep-apnea-obstructive.json",
             "load": true,
             "loader": "fhir-bundle",
             "name": "Sleep Apnea, Obstructive",

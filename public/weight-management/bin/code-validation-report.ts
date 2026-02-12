@@ -1,6 +1,6 @@
 /**
  * Uses the CodeSystem/$validate-code operation (tx.fhir.org) to validate each code
- * from the ValueSets in fhir/ and writes a CSV report: File, CodeSystem ID, Code, Result, JSON Response.
+ * from the ValueSets in value-sets/ and writes a CSV report: File, CodeSystem ID, Code, Result, JSON Response.
  *
  * Run: npx ts-node bin/code-validation-report.ts
  */
@@ -13,8 +13,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.join(__dirname, "..");
 
-const INPUT_DIR = path.join(ROOT, "fhir");
-const REPORT_PATH = path.join(ROOT, "fhir", "code-validation-report.csv");
+const INPUT_DIR = path.join(ROOT, "value-sets");
+const REPORT_PATH = path.join(ROOT, "value-sets", "code-validation-report.csv");
 const VALIDATE_CODE_URL = "http://localhost:8282/fhir/CodeSystem/$validate-code";
 
 /** Delay between API calls (ms) to reduce load on the server */
