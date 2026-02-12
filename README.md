@@ -16,6 +16,11 @@ Use the application at: http://localhost:4204, which requires an open FHIR serve
 docker run -d --name hapi-r4 -p 8080:8080 -e hapi.fhir.fhir_version=R4 -e spring.main.allow-bean-definition-overriding=true -e hapi.fhir.expunge_enabled=true -e hapi.fhir.allow_multiple_delete=true -e hapi.fhir.bulk_export_enabled=true -e hapi.fhir.bulk_import_enabled=true -e hapi.fhir.enable_index_missing_fields=true -e hapi.fhir.cdshooks.enabled=true -e hapi.fhir.cr.enabled=true  hapiproject/hapi:latest
 ```
 
+To build your own:
+```sh
+docker buildx build --platform linux/arm64,linux/amd64 -t p3000/asu-cds-data:latest .
+```
+
 ## License
 
 Provided under the Apache 2.0 license. See LICENSE file for details.

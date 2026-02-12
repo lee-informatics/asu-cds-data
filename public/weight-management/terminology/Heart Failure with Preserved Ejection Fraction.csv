@@ -1,0 +1,39 @@
+Source Code,Term Original,Value Set Name,Code System Name,Code System Version
+1204200007,Left ventricular failure with normal ejection fraction due to valvular heart disease,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+1204203009,Left ventricular failure with normal ejection fraction due to coronary artery disease,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+1204204003,Left ventricular failure with normal ejection fraction due to myocarditis,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+1204206001,Left ventricular failure with normal ejection fraction due to cardiomyopathy,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+120881000119106,Diastolic heart failure stage D,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+120891000119109,Diastolic heart failure stage C,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+120901000119108,Diastolic heart failure stage B,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+153931000119109,Acute combined systolic and diastolic heart failure,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+153941000119100,Chronic combined systolic and diastolic heart failure,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+153951000119103,Acute on chronic combined systolic and diastolic heart failure,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+418304008,Diastolic heart failure,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+428.3,Diastolic heart failure,Heart Failure with Preserved Ejection Fraction,ICD-9-CM Diagnosis,31/32
+428.30,"Diastolic heart failure, unspecified",Heart Failure with Preserved Ejection Fraction,ICD-9-CM Diagnosis,31/32
+428.31,Acute diastolic heart failure,Heart Failure with Preserved Ejection Fraction,ICD-9-CM Diagnosis,31/32
+428.32,Chronic diastolic heart failure,Heart Failure with Preserved Ejection Fraction,ICD-9-CM Diagnosis,31/32
+428.33,Acute on chronic diastolic heart failure,Heart Failure with Preserved Ejection Fraction,ICD-9-CM Diagnosis,31/32
+428.4,Combined systolic and diastolic heart failure,Heart Failure with Preserved Ejection Fraction,ICD-9-CM Diagnosis,31/32
+428.40,"Combined systolic and diastolic heart failure, unspecified",Heart Failure with Preserved Ejection Fraction,ICD-9-CM Diagnosis,31/32
+428.41,Acute combined systolic and diastolic heart failure,Heart Failure with Preserved Ejection Fraction,ICD-9-CM Diagnosis,31/32
+428.42,Chronic combined systolic and diastolic heart failure,Heart Failure with Preserved Ejection Fraction,ICD-9-CM Diagnosis,31/32
+428.43,Acute on chronic combined systolic and diastolic heart failure,Heart Failure with Preserved Ejection Fraction,ICD-9-CM Diagnosis,31/32
+441530006,Chronic diastolic heart failure,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+443343001,Acute diastolic heart failure,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+443344007,Acute on chronic diastolic heart failure,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+446221000,Heart failure with normal ejection fraction,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+7401000175100,Acute on chronic heart failure co-occurrent with normal ejection fraction,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+7411000175102,Chronic heart failure co-occurrent with normal ejection fraction,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+7421000175106,Acute heart failure co-occurrent with normal ejection fraction,Heart Failure with Preserved Ejection Fraction,SNOMED CT US Edition,20250901
+I50.3,Diastolic (congestive) heart failure,Heart Failure with Preserved Ejection Fraction,ICD-10-CM,2026
+I50.30,Unspecified diastolic (congestive) heart failure,Heart Failure with Preserved Ejection Fraction,ICD-10-CM,2026
+I50.31,Acute diastolic (congestive) heart failure,Heart Failure with Preserved Ejection Fraction,ICD-10-CM,2026
+I50.32,Chronic diastolic (congestive) heart failure,Heart Failure with Preserved Ejection Fraction,ICD-10-CM,2026
+I50.33,Acute on chronic diastolic (congestive) heart failure,Heart Failure with Preserved Ejection Fraction,ICD-10-CM,2026
+I50.4,Combined systolic (congestive) and diastolic (congestive) heart failure,Heart Failure with Preserved Ejection Fraction,ICD-10-CM,2026
+I50.40,Unspecified combined systolic (congestive) and diastolic (congestive) heart failure,Heart Failure with Preserved Ejection Fraction,ICD-10-CM,2026
+I50.41,Acute combined systolic (congestive) and diastolic (congestive) heart failure,Heart Failure with Preserved Ejection Fraction,ICD-10-CM,2026
+I50.42,Chronic combined systolic (congestive) and diastolic (congestive) heart failure,Heart Failure with Preserved Ejection Fraction,ICD-10-CM,2026
+I50.43,Acute on chronic combined systolic (congestive) and diastolic (congestive) heart failure,Heart Failure with Preserved Ejection Fraction,ICD-10-CM,2026

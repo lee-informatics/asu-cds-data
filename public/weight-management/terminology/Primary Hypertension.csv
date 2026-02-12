@@ -1,0 +1,23 @@
+Source Code,Term Original,Value Set Name,Code System Name,Code System Version
+1201005,Benign essential hypertension,"Hypertension, Primary",SNOMED CT US Edition,20250901
+18416000,Essential hypertension complicating AND/OR reason for care during childbirth,"Hypertension, Primary",SNOMED CT US Edition,20250901
+19769006,High-renin essential hypertension,"Hypertension, Primary",SNOMED CT US Edition,20250901
+198942000,"Benign essential hypertension complicating pregnancy, childbirth and the puerperium","Hypertension, Primary",SNOMED CT US Edition,20250901
+23717007,Benign essential hypertension complicating AND/OR reason for care during pregnancy,"Hypertension, Primary",SNOMED CT US Edition,20250901
+35303009,Benign essential hypertension complicating AND/OR reason for care during puerperium,"Hypertension, Primary",SNOMED CT US Edition,20250901
+371125006,Labile essential hypertension,"Hypertension, Primary",SNOMED CT US Edition,20250901
+401,Essential hypertension,"Hypertension, Primary",ICD-9-CM Diagnosis,31/32
+401.0,Malignant essential hypertension,"Hypertension, Primary",ICD-9-CM Diagnosis,31/32
+401.1,Benign essential hypertension,"Hypertension, Primary",ICD-9-CM Diagnosis,31/32
+401.9,Unspecified essential hypertension,"Hypertension, Primary",ICD-9-CM Diagnosis,31/32
+40511000119107,Postpartum pre-existing essential hypertension,"Hypertension, Primary",SNOMED CT US Edition,20250901
+429457004,Systolic essential hypertension,"Hypertension, Primary",SNOMED CT US Edition,20250901
+46481004,Low-renin essential hypertension,"Hypertension, Primary",SNOMED CT US Edition,20250901
+59621000,Essential hypertension,"Hypertension, Primary",SNOMED CT US Edition,20250901
+63287004,Benign essential hypertension in obstetric context,"Hypertension, Primary",SNOMED CT US Edition,20250901
+71874008,Benign essential hypertension complicating AND/OR reason for care during childbirth,"Hypertension, Primary",SNOMED CT US Edition,20250901
+72022006,Essential hypertension in obstetric context,"Hypertension, Primary",SNOMED CT US Edition,20250901
+78808002,Essential hypertension complicating AND/OR reason for care during pregnancy,"Hypertension, Primary",SNOMED CT US Edition,20250901
+78975002,Malignant essential hypertension,"Hypertension, Primary",SNOMED CT US Edition,20250901
+9901000,Essential hypertension complicating AND/OR reason for care during puerperium,"Hypertension, Primary",SNOMED CT US Edition,20250901
+I10,Essential (primary) hypertension,"Hypertension, Primary",ICD-10-CM,2026

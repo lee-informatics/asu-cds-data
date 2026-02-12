@@ -1,9 +1,21 @@
 {
     "$schema": "https://stack.skycapp.com/stack.schema.json",
-    "title": "ASU CDS Synthetic Data",
-    "instructions": "The included Synthea-generated data files, below, can be loaded into a FHIR R4-compliant server to replicate scripted demonstrations or to customize your own. Larger files may take several minutes to load.",
+    "title": "Weight Management Medication (WMM) CQL Logic, Value Sets, and Synthetic Test Data",
+    "instructions": "The included CQL logic, value sets, and Synthea-generated data files can be loaded into a FHIR R4-compliant server to replicate scripted demonstrations or customization. The patient data files are large and may take a while for your server to load and index.",
     "fhir_base_url": "http://localhost:8080/fhir",
     "driver": "hapi",
+    "scenarios": [
+        {
+            "id": "cql-logic-and-value-sets-only",
+            "title": "CQL Logic and Value Sets Only",
+            "description": "This scenario includes only the CQL logic and FHIR value sets. Patient data files and their data dependencies are not included."
+        },
+        {
+            "id": "patient-data-only",
+            "title": "Patient Data Only",
+            "description": "This scenario includes only Synthea-generated FHIR Patient data Bundle files and their data dependencies. CQL Librarylogic and FHIR value sets are not included."
+        }
+    ],
     "links": [
         {
             "name": "ASU CDS Stack Controller",
@@ -22,8 +34,10 @@
             "name": "Synthea Organization Bundle",
             "description": "Synthea-generated Organization records",
             "type": "Organization Bundle",
-            "priority": 0
-
+            "priority": 0,
+            "scenarios": [
+                "patient-data-only"
+            ]
         },
         {
             "file": "data/practitionerInformation1744683719203.json",
@@ -32,8 +46,10 @@
             "name": "Synthea Practitioner Bundle",
             "description": "Synthea-generated Practitioner records",
             "type": "Practitioner Bundle",
-            "priority": 1
-
+            "priority": 1,
+            "scenarios": [
+                "patient-data-only"
+            ]
         },
         {
             "file": "data/Aaron697_Ryan260_9f2ef891-739a-fd21-eb28-49159483f9cf.json",
@@ -42,7 +58,10 @@
             "name": "Patient Synthea R5 - Aaron697_Ryan260",
             "description": "Synthetic patient record for WMM project testing.",
             "type": "Patient Bundle",
-            "priority": 6
+            "priority": 2,
+            "scenarios": [
+                "patient-data-only"
+            ]
         },
         {
             "file": "data/Dakota806_Hegmann834_1c2eb354-d800-404a-d393-0c802c4e581f.json",
@@ -51,7 +70,10 @@
             "name": "Patient Synthea R5 - Dakota806_Hegmann834",
             "description": "Synthetic patient record for WMM project testing.",
             "type": "Patient Bundle",
-            "priority": 7
+            "priority": 3,
+            "scenarios": [
+                "patient-data-only"
+            ]
         },
         {
             "file": "data/Dori98_Bailey598_b93b0a92-648f-55aa-8841-ce863b9c21a5.json",
@@ -60,7 +82,10 @@
             "name": "Patient Synthea R5 - Dori98_Bailey598",
             "description": "Synthetic patient record for WMM project testing.",
             "type": "Patient Bundle",
-            "priority": 8
+            "priority": 4,
+            "scenarios": [
+                "patient-data-only"
+            ]
         },
         {
             "file": "data/Enoch803_Rempel203_69068937-ff52-ebc2-f140-f9ee77fad999.json",
@@ -69,7 +94,151 @@
             "name": "Patient Synthea R5 - Enoch803_Rempel203",
             "description": "Synthetic patient record for WMM project testing.",
             "type": "Patient Bundle",
-            "priority": 9
+            "priority": 5,
+            "scenarios": [
+                "patient-data-only"
+            ]
+        },
+        {
+            "file": "weight-management/fhir/cardiovascular-diseases.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Cardiovascular Diseases",
+            "description": "FHIR ValueSet for cardiovascular diseases",
+            "type": "Value Set",
+            "priority": 6,
+            "scenarios": [
+                "cql-logic-and-value-sets-only"
+            ]
+        },
+        {
+            "file": "weight-management/fhir/heart-failure-with-preserved-ejection-fraction.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Heart Failure with Preserved Ejection Fraction",
+            "description": "FHIR ValueSet for heart failure with preserved ejection fraction",
+            "type": "Value Set",
+            "priority": 7,
+            "scenarios": [
+                "cql-logic-and-value-sets-only"
+            ]
+        },
+        {
+            "file": "weight-management/fhir/diabetes-mellitus-type-2.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Diabetes Mellitus Type 2",
+            "description": "FHIR ValueSet for type 2 diabetes mellitus",
+            "type": "Value Set",
+            "priority": 8,
+            "scenarios": [
+                "cql-logic-and-value-sets-only"
+            ]
+        },
+        {
+            "file": "weight-management/fhir/dyslipidemia-all.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Dyslipidemia All",
+            "description": "FHIR ValueSet for dyslipidemia",
+            "type": "Value Set",
+            "priority": 9,
+            "scenarios": [
+                "cql-logic-and-value-sets-only"
+            ]
+        },
+        {
+            "file": "weight-management/fhir/hypertension-primary.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Hypertension, Primary",
+            "description": "FHIR ValueSet for primary (essential) hypertension",
+            "type": "Value Set",
+            "priority": 10,
+            "scenarios": [
+                "cql-logic-and-value-sets-only"
+            ]
+        },
+        {
+            "file": "weight-management/fhir/metabolic-dysfunction-associated-steatotic-liver-disease.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Metabolic Dysfunction Associated Steatotic Liver Disease",
+            "description": "FHIR ValueSet for MASLD",
+            "type": "Value Set",
+            "priority": 11,
+            "scenarios": [
+                "cql-logic-and-value-sets-only"
+            ]
+        },
+        {
+            "file": "weight-management/fhir/metabolic-syndrome.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Metabolic Syndrome",
+            "description": "FHIR ValueSet for metabolic syndrome",
+            "type": "Value Set",
+            "priority": 12,
+            "scenarios": [
+                "cql-logic-and-value-sets-only"
+            ]
+        },
+        {
+            "file": "weight-management/fhir/osteoarthritis.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Osteoarthritis",
+            "description": "FHIR ValueSet for osteoarthritis",
+            "type": "Value Set",
+            "priority": 13,
+            "scenarios": [
+                "cql-logic-and-value-sets-only"
+            ]
+        },
+        {
+            "file": "weight-management/fhir/sleep-apnea-obstructive.json",
+            "load": true,
+            "loader": "fhir-bundle",
+            "name": "Sleep Apnea, Obstructive",
+            "description": "FHIR ValueSet for obstructive sleep apnea",
+            "type": "Value Set",
+            "priority": 14,
+            "scenarios": [
+                "cql-logic-and-value-sets-only"
+            ]
+        },
+        {
+            "file": "weight-management/cql/WeightManagementMedication.cql",
+            "load": true,
+            "loader": "cql-as-fhir-library",
+            "name": "Weight Management Medication",
+            "description": "CQL logic for weight management medication clinical decision support",
+            "type": "CQL Library",
+            "priority": 15,
+            "scenarios": [
+                "cql-logic-and-value-sets-only"
+            ],
+            "evaluate": {
+                "id": "WeightManagementMedication",
+                "subjects": [
+                    {
+                        "id": "9f2ef891-739a-fd21-eb28-49159483f9cf",
+                        "name": "Aaron697_Ryan260"
+                    },
+                    {
+                        "id": "1c2eb354-d800-404a-d393-0c802c4e581f",
+                        "name": "Dakota806_Hegmann834"
+                    },
+                    {
+                        "id": "b93b0a92-648f-55aa-8841-ce863b9c21a5",
+                        "name": "Dori98_Bailey598"
+                    },
+                    {
+                        "id": "69068937-ff52-ebc2-f140-f9ee77fad999",
+                        "name": "Enoch803_Rempel203"
+                    }
+                ]
+            }
         }
     ]
 }
