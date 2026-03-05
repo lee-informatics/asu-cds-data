@@ -5,8 +5,6 @@
 //
 // All BMI-related expressions will not be truthy if the Patient does not have any BMI observations.
 // That is, all BMI-related logic will return false in the absense of explicit BMI evidence.
-// For this reason, the tiering calculations are defined separately from BMI retrieval such that
-// the invoking application may decide how to tier the patient in the absense of evidence.
 //
 // Author: Preston Lee
 //
@@ -39,7 +37,11 @@ codesystem "SNOMED" : 'http://snomed.info/sct'
 
 code "BMI LOINC" : '39156-5' from "LOINC" display 'Body mass index (BMI) [Ratio]'
 
+// Logic is intended to operate upon a single FHIR Patient subject at a time
+
 context Patient
+
+// Generic BMI-related functions
 
 define function MostRecentBMI():
   Last([Observation : "BMI LOINC"] O
@@ -58,6 +60,8 @@ define function HasBMIBetween(low System.Quantity, high System.Quantity):
 define function BMIValue():
   (MostRecentBMI().value as Quantity)bmi
   return ToString(bmi.value.value)+ ' ' + bmi.unit.value
+
+  // Queries intended to directly align with the information concepts defined by the clinical guidelines
 
 define function EstablishedCardiovascularDiseases():
   [Condition : "CardiovascularDiseases"] C where exists(C.clinicalStatus.coding CSCode where CSCode.code ~ 'active')
@@ -80,7 +84,7 @@ define function LiftThreateningWeightRelatedConditions():
   // TODO - Don't know what to query for!
   {} as List < Condition >
 
-  // Exposed Expressions
+  // Expressions automatically evaluated for the caller in FHIR Patient context
 
 define HasBMIOver40 :
   HasBMIOver(40.0 'kg/m2')
@@ -96,6 +100,19 @@ define HasBMI27To30 :
 
 define LatestBMI :
   MostRecentBMI()
+
+  // Tier determinations as defined by the guidelines.
+  // Important: Tiering determinations may incorrectly return false if the Patient does not have any BMI records,
+  // as a specific BMI range is required for most categories.
+
+define HighestTier :
+  if IsTier1a then '1a'
+  else if IsTier1b then '1b'
+  else if IsTier2a then '2a'
+  else if IsTier2b then '2b'
+  else if IsTier2c then '2c'
+  else if IsTier3 then '3'
+  else null
 
 define IsTier1a :
   Count(LiftThreateningWeightRelatedConditions())> 0
