@@ -1,9 +1,15 @@
+// Author: Preston Lee
+// Implementation of decision table from "Guidance for Managing Scarce Weight Management Medication Resources in VA"
+// clinical guidelines document dated May, 2024, as published by U.S. Department of Veterans Affairs.
+
 library WeightManagementMedication version '0.3.0'
 
 using FHIR version '4.0.1'
 include FHIRHelpers version '4.0.1'
 
-// ValueSet resources derived from those provided by Clinical Architecture
+// These ValueSet resources have been  derived from those provided by the Clinical Architecture team
+// providing support for the Symedical terminology infrastructure implemented at VA.
+// Expansions of certain value sets are too long to inline into the library, and thus require runtime evaluation.
 valueset "CardiovascularDiseases" : 'https://asu.edu/fhir/ValueSet/cardiovascular-diseases'
 valueset "DiabetesMellitusType2" : 'https://asu.edu/fhir/ValueSet/diabetes-mellitus-type-2'
 valueset "DyslipidemiaAll" : 'https://asu.edu/fhir/ValueSet/dyslipidemia-all'
@@ -14,9 +20,11 @@ valueset "MetabolicSyndrome" : 'https://asu.edu/fhir/ValueSet/metabolic-syndrome
 valueset "Osteoarthritis" : 'https://asu.edu/fhir/ValueSet/osteoarthritis'
 valueset "SleepApneaObstructive" : 'https://asu.edu/fhir/ValueSet/sleep-apnea-obstructive'
 
-// Custom inline/hardcoded ValueSet definitions that should be changed to resolve against an external terminology servers at runtime.
-codesystem "SNOMED" : 'http://snomed.info/sct'
+// Declarations for inline/hardcoded code references.
 codesystem "LOINC" : 'http://loinc.org'
+codesystem "SNOMED" : 'http://snomed.info/sct'
+
+// HL7 value sets that can be used for additional Condition logic, if needed.
 //codesystem "ConditionClinicalStatus": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
 //codesystem "ConditionVerificationStatus": 'http://terminology.hl7.org/CodeSystem/condition-ver-status'
 
@@ -45,6 +53,24 @@ define function BMIValue():
 define function EstablishedCardiovascularDiseases():
   [Condition : "CardiovascularDiseases"] C where exists(C.clinicalStatus.coding CSCode where CSCode.code ~ 'active')
 
+define function WeightRelatedConditions():
+  [Condition]
+  // TODO - Temporarily commented out due to HAPI FHIR ValueSet resolution issues.
+  //  [Condition] C where C.code in "CardiovascularDiseases"
+  //  or C.code in "CardiovascularDiseases"
+  //  or C.code in "DiabetesMellitusType2"
+  //  or C.code in "DyslipidemiaAll"
+  //  or C.code in "HeartFailureWithPreservedEjectionFraction"
+  //  or C.code in "HypertensionPrimary"
+  //  or C.code in "MetabolicDysfunctionAssociatedSteatoticLiverDisease"
+  //  or C.code in "MetabolicSyndrome"
+  //  or C.code in "Osteoarthritis"
+  //  or C.code in "SleepApneaObstructive"
+
+define function LiftThreateningWeightRelatedConditions():
+  // TODO - Don't know what to query for!
+  {} as List < Condition >
+
   // Exposed Expressions
 
 define HasBMIOver40 :
@@ -59,32 +85,32 @@ define HasBMI30To35 :
 define HasBMI27To30 :
   HasBMIBetween(27.0 'kg/m2', 30.0 'kg/m2')
 
-define BMI :
-  MostRecentBMI()
-
 define LatestBMI :
   MostRecentBMI()
 
-define WeightRelatedConditions :
-  [Condition] C where C.code in "CardiovascularDiseases"
-  or C.code in "CardiovascularDiseases"
-  or C.code in "DiabetesMellitusType2"
-  or C.code in "DyslipidemiaAll"
-  or C.code in "HeartFailureWithPreservedEjectionFraction"
-  or C.code in "HypertensionPrimary"
-  or C.code in "MetabolicDysfunctionAssociatedSteatoticLiverDisease"
-  or C.code in "MetabolicSyndrome"
-  or C.code in "Osteoarthritis"
-  or C.code in "SleepApneaObstructive"
-
 define IsTier1a :
-  // TODO
-  false
+  Count(LiftThreateningWeightRelatedConditions())> 0
 
 define IsTier1b :
   AgeInYears()>= 45
-  and Exists(EstablishedCardiovascularDiseases())
-  and(HasBMI27To30 or HasBMI30To35 or HasBMI35To40 or HasBMIOver40)
+  // TODO - Failing due to HAPI FHIR ValueSet resolution issues.
+  // and Exists(EstablishedCardiovascularDiseases())
+  and(HasBMIOver(27.0 'kg/m2'))
 
-  //define IsTier3 :
-  //  IsTier3i  or IsTier3ii   or IsTier3iii
+define IsTier2a :
+  (Count(WeightRelatedConditions())>= 3
+    // TODO - Failing due to HAPI FHIR ValueSet resolution issues.
+    // or exists [Condition: "HeartFailureWithPreservedEjectionFraction"]
+  )
+  and(HasBMIOver(27.0 'kg/m2'))
+
+define IsTier2b :
+  Count(WeightRelatedConditions())>= 2
+  and(HasBMIOver(27.0 'kg/m2'))
+
+define IsTier2c :
+  Count(WeightRelatedConditions())>= 2
+  and(HasBMIOver(27.0 'kg/m2'))
+
+define IsTier3 :
+  HasBMIOver(30.0 'kg/m2')
