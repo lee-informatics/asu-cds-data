@@ -1,8 +1,17 @@
-// Author: Preston Lee
 // Implementation of decision table from "Guidance for Managing Scarce Weight Management Medication Resources in VA"
 // clinical guidelines document dated May, 2024, as published by U.S. Department of Veterans Affairs.
+//
+// Implementation Notes
+//
+// All BMI-related expressions will not be truthy if the Patient does not have any BMI observations.
+// That is, all BMI-related logic will return false in the absense of explicit BMI evidence.
+// For this reason, the tiering calculations are defined separately from BMI retrieval such that
+// the invoking application may decide how to tier the patient in the absense of evidence.
+//
+// Author: Preston Lee
+//
 
-library WeightManagementMedication version '0.3.0'
+library WeightManagementMedication version '0.4.0'
 
 using FHIR version '4.0.1'
 include FHIRHelpers version '4.0.1'
