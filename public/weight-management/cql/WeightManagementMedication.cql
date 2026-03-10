@@ -9,7 +9,7 @@
 // Author: Preston Lee
 //
 
-library WeightManagementMedication version '0.4.0'
+library WeightManagementMedication version '0.5.0'
 
 using FHIR version '4.0.1'
 include FHIRHelpers version '4.0.1'
@@ -67,24 +67,22 @@ define function EstablishedCardiovascularDiseases():
   [Condition : "CardiovascularDiseases"] C where exists(C.clinicalStatus.coding CSCode where CSCode.code ~ 'active')
 
 define function WeightRelatedConditions():
-  [Condition]
-  // TODO - Temporarily commented out due to HAPI FHIR ValueSet resolution issues.
-  //  [Condition] C where C.code in "CardiovascularDiseases"
-  //  or C.code in "CardiovascularDiseases"
-  //  or C.code in "DiabetesMellitusType2"
-  //  or C.code in "DyslipidemiaAll"
-  //  or C.code in "HeartFailureWithPreservedEjectionFraction"
-  //  or C.code in "HypertensionPrimary"
-  //  or C.code in "MetabolicDysfunctionAssociatedSteatoticLiverDisease"
-  //  or C.code in "MetabolicSyndrome"
-  //  or C.code in "Osteoarthritis"
-  //  or C.code in "SleepApneaObstructive"
+  [Condition] C where C.code in "CardiovascularDiseases"
+    or C.code in "CardiovascularDiseases"
+    or C.code in "DiabetesMellitusType2"
+    or C.code in "DyslipidemiaAll"
+    or C.code in "HeartFailureWithPreservedEjectionFraction"
+    or C.code in "HypertensionPrimary"
+    or C.code in "MetabolicDysfunctionAssociatedSteatoticLiverDisease"
+    or C.code in "MetabolicSyndrome"
+    or C.code in "Osteoarthritis"
+    or C.code in "SleepApneaObstructive"
 
 define function LiftThreateningWeightRelatedConditions():
   // TODO - Don't know what to query for!
   {} as List < Condition >
 
-  // Expressions automatically evaluated for the caller in FHIR Patient context
+// Expressions automatically evaluated for the caller in FHIR Patient context
 
 define HasBMIOver40 :
   HasBMIOver(40.0 'kg/m2')
@@ -119,14 +117,12 @@ define IsTier1a :
 
 define IsTier1b :
   AgeInYears()>= 45
-  // TODO - Failing due to HAPI FHIR ValueSet resolution issues.
-  // and Exists(EstablishedCardiovascularDiseases())
+  and Exists(EstablishedCardiovascularDiseases())
   and(HasBMIOver(27.0 'kg/m2'))
 
 define IsTier2a :
   (Count(WeightRelatedConditions())>= 3
-    // TODO - Failing due to HAPI FHIR ValueSet resolution issues.
-    // or exists [Condition: "HeartFailureWithPreservedEjectionFraction"]
+    or exists [Condition: "HeartFailureWithPreservedEjectionFraction"]
   )
   and(HasBMIOver(27.0 'kg/m2'))
 
@@ -140,3 +136,7 @@ define IsTier2c :
 
 define IsTier3 :
   HasBMIOver(30.0 'kg/m2')
+
+// Comment this out if we don't need it.
+define AllWeightRelatedConditions:
+  WeightRelatedConditions()
