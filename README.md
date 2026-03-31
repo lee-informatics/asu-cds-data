@@ -1,5 +1,9 @@
 # ASU CDS Data
 
+[![Docker pulls](https://shields.foundry.hl7.org/docker/pulls/p3000/asu-cds-data?logo=docker)](https://hub.docker.com/r/p3000/asu-cds-data)
+[![Docker image size](https://shields.foundry.hl7.org/docker/image-size/p3000/asu-cds-data?logo=docker)](https://hub.docker.com/r/p3000/asu-cds-data)
+
+
 This project provides FHIR data and a turnkey FHIR controller for loading seed data used for Lee Informatics lab projects into a locally running FHIR resource server. See [GitHub](https://github.com/lee-informatics/asu-cds-data) for source.
 
 ## Running Pre-Built Images
