@@ -9,7 +9,7 @@
 // Author: Preston Lee
 //
 
-library WeightManagementMedication version '0.5.0'
+library WeightManagementMedication version '0.6.0'
 
 using FHIR version '4.0.1'
 include FHIRHelpers version '4.0.1'
@@ -30,12 +30,15 @@ valueset "SleepApneaObstructive" : 'https://asu.edu/fhir/ValueSet/sleep-apnea-ob
 // Declarations for inline/hardcoded code references.
 codesystem "LOINC" : 'http://loinc.org'
 codesystem "SNOMED" : 'http://snomed.info/sct'
+codesystem "UCUM": 'http://unitsofmeasure.org'
 
 // HL7 value sets that can be used for additional Condition logic, if needed.
 //codesystem "ConditionClinicalStatus": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
 //codesystem "ConditionVerificationStatus": 'http://terminology.hl7.org/CodeSystem/condition-ver-status'
 
 code "BMI LOINC" : '39156-5' from "LOINC" display 'Body mass index (BMI) [Ratio]'
+code "Body Height" : '8302-2' from "LOINC" display 'Body height'
+code "Body Weight" : '29463-7' from "LOINC" display 'Body weight'
 
 // Logic is intended to operate upon a single FHIR Patient subject at a time
 
@@ -43,23 +46,51 @@ context Patient
 
 // Generic BMI-related functions
 
-define function MostRecentBMI():
+define function RecordedBodyWeight():
+	First([Observation: "Body Weight"] W
+    	where W.status in { 'final', 'amended', 'corrected' }
+        and W.effective is not null
+        and W.value.code in {'kg', '[lb_av]'}
+        sort by start of effective desc)
+
+define function RecordedBodyHeight() : 
+	First([Observation: "Body Height"] H
+    	where H.status in { 'final', 'amended', 'corrected'}
+        and H.effective is not null
+        and H.value.code in {'m', 'cm', 'in_i'}
+        sort by start of effective desc)
+
+define function RecordedBMI():
   Last([Observation : "BMI LOINC"] O
     where O.status in { 'final', 'amended', 'corrected' }
     and O.effective is not null
     sort by start of effective asc
   )
 
+define function ComputeBMIFromWeightAndHeight() :
+	convert (convert RecordedBodyWeight().value to 'kg') / ((convert RecordedBodyHeight().value to 'm') * (convert RecordedBodyHeight().value to 'm')) to 'kg/m2'
+
+// define function TestBMI() :
+//	[Observation] O where exists(O.code.coding OC where OC.code ~ 'BAD-CODE')
+
+// Uses the most recent explicitly recorded BMI observation if present,
+// with fallback to manual calculation based on recorded weight and height.
+// If neither are possible from available data, returns null.
+define function BestBMI() :
+	Coalesce(RecordedBMI().value, ComputeBMIFromWeightAndHeight())
+ 
+
 define function HasBMIOver(bmi System.Quantity):
-  MostRecentBMI().value as Quantity > bmi
+  BestBMI() > bmi
 
+// Generic BMI range determination.
+// Lower boundary is inclusive. Upper boundary is exclusive.
 define function HasBMIBetween(low System.Quantity, high System.Quantity):
-  MostRecentBMI().value as Quantity >= low
-  and MostRecentBMI().value as Quantity < high
+  BestBMI() >= low and BestBMI() < high
 
-define function BMIValue():
-  (MostRecentBMI().value as Quantity)bmi
-  return ToString(bmi.value.value)+ ' ' + bmi.unit.value
+//define function BMIValue():
+//  (BestBMI()) bmi
+//  return ToString(bmi.value)+ ' ' + bmi.unit
 
   // Queries intended to directly align with the information concepts defined by the clinical guidelines
 
@@ -95,9 +126,6 @@ define HasBMI30To35 :
 
 define HasBMI27To30 :
   HasBMIBetween(27.0 'kg/m2', 30.0 'kg/m2')
-
-define LatestBMI :
-  MostRecentBMI()
 
   // Tier determinations as defined by the guidelines.
   // Important: Tiering determinations may incorrectly return false if the Patient does not have any BMI records,
@@ -137,6 +165,21 @@ define IsTier2c :
 define IsTier3 :
   HasBMIOver(30.0 'kg/m2')
 
+define MostRecentRecordedBodyHeight :
+	RecordedBodyHeight()
+
+define MostRecentRecordedBodyWeight :
+	RecordedBodyWeight()
+
+define MostRecentRecordedBMI : 
+	RecordedBMI().value
+
+define ComputedBMI : 
+	ComputeBMIFromWeightAndHeight()
+
+define UsedBMI :
+  BestBMI()
+
 // Comment this out if we don't need it.
-define AllWeightRelatedConditions:
-  WeightRelatedConditions()
+//define AllWeightRelatedConditions:
+//  WeightRelatedConditions()
