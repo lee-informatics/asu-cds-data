@@ -1,10 +1,13 @@
-// Implementation of decision table from "Guidance for Managing Scarce Weight Management Medication Resources in VA"
-// clinical guidelines document dated May, 2024, as published by U.S. Department of Veterans Affairs.
+// Clinical decision support logic implementing "Guidance for Managing Scarce Weight Management Medication Resources in VA"
+// guidelines document dated May, 2024, as published by U.S. Department of Veterans Affairs.
 //
-// Implementation Notes
 //
-// All BMI-related expressions will not be truthy if the Patient does not have any BMI observations.
-// That is, all BMI-related logic will return false in the absense of explicit BMI evidence.
+// The guidelines require some form of BMI measurement. This is implemented using either:
+//
+// 1) [Default] Calculated BMI from the most recent weight and height observations, with automatic unit conversions
+// 2) [Fallback] The most recently captured explicit, pre-computed BMI observation
+//
+// If BMI cannot be determined, expression output will return "unknown", null, or empty values.
 //
 // Author: Preston Lee
 //
@@ -50,7 +53,7 @@ define function RecordedBodyWeight():
 	First([Observation: "Body Weight"] W
     	where W.status in { 'final', 'amended', 'corrected' }
         and W.effective is not null
-        and W.value.code in {'kg', '[lb_av]'}
+        and W.value.code in {'kg', 'lb_av'}
         sort by start of effective desc)
 
 define function RecordedBodyHeight() : 
@@ -77,9 +80,8 @@ define function ComputeBMIFromWeightAndHeight() :
 // with fallback to manual calculation based on recorded weight and height.
 // If neither are possible from available data, returns null.
 define function BestBMI() :
-	Coalesce(RecordedBMI().value, ComputeBMIFromWeightAndHeight())
+	Coalesce(ComputeBMIFromWeightAndHeight(), RecordedBMI().value)
  
-
 define function HasBMIOver(bmi System.Quantity):
   BestBMI() > bmi
 
@@ -88,11 +90,7 @@ define function HasBMIOver(bmi System.Quantity):
 define function HasBMIBetween(low System.Quantity, high System.Quantity):
   BestBMI() >= low and BestBMI() < high
 
-//define function BMIValue():
-//  (BestBMI()) bmi
-//  return ToString(bmi.value)+ ' ' + bmi.unit
-
-  // Queries intended to directly align with the information concepts defined by the clinical guidelines
+// Queries intended to directly align with the information concepts defined by the clinical guidelines
 
 define function EstablishedCardiovascularDiseases():
   [Condition : "CardiovascularDiseases"] C where exists(C.clinicalStatus.coding CSCode where CSCode.code ~ 'active')
@@ -127,9 +125,9 @@ define HasBMI30To35 :
 define HasBMI27To30 :
   HasBMIBetween(27.0 'kg/m2', 30.0 'kg/m2')
 
-  // Tier determinations as defined by the guidelines.
-  // Important: Tiering determinations may incorrectly return false if the Patient does not have any BMI records,
-  // as a specific BMI range is required for most categories.
+// Tier determinations as defined by the guidelines.
+// Important: Tiering determinations may incorrectly return false if the Patient does not have any BMI records,
+// as a specific BMI range is required for most categories.
 
 define HighestTier :
   if IsTier1a then '1a'
@@ -181,5 +179,5 @@ define UsedBMI :
   BestBMI()
 
 // Comment this out if we don't need it.
-//define AllWeightRelatedConditions:
-//  WeightRelatedConditions()
+define AllWeightRelatedConditions:
+  WeightRelatedConditions()
