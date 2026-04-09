@@ -53,14 +53,14 @@ define function RecordedBodyWeight():
 	First([Observation: "Body Weight"] W
     	where W.status in { 'final', 'amended', 'corrected' }
         and W.effective is not null
-        and W.value.code in {'kg', 'lb_av'}
+        and W.value.code in {'kg', '[lb_av]'}
         sort by start of effective desc)
 
 define function RecordedBodyHeight() : 
 	First([Observation: "Body Height"] H
     	where H.status in { 'final', 'amended', 'corrected'}
         and H.effective is not null
-        and H.value.code in {'m', 'cm', 'in_i'}
+        and H.value.code in {'m', 'cm', '[in_i]'}
         sort by start of effective desc)
 
 define function RecordedBMI():
