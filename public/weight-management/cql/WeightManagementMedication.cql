@@ -12,7 +12,7 @@
 // Author: Preston Lee
 //
 
-library WeightManagementMedication version '0.6.0'
+library WeightManagementMedication version '1.0.0'
 
 using FHIR version '4.0.1'
 include FHIRHelpers version '4.0.1'
@@ -76,19 +76,13 @@ define function ComputeBMIFromWeightAndHeight() :
 // define function TestBMI() :
 //	[Observation] O where exists(O.code.coding OC where OC.code ~ 'BAD-CODE')
 
-// Uses the most recent explicitly recorded BMI observation if present,
-// with fallback to manual calculation based on recorded weight and height.
-// If neither are possible from available data, returns null.
-define function BestBMI() :
-	Coalesce(ComputeBMIFromWeightAndHeight(), RecordedBMI().value)
- 
 define function HasBMIOver(bmi System.Quantity):
-  BestBMI() > bmi
+  UsedBMI > bmi
 
 // Generic BMI range determination.
 // Lower boundary is inclusive. Upper boundary is exclusive.
 define function HasBMIBetween(low System.Quantity, high System.Quantity):
-  BestBMI() >= low and BestBMI() < high
+  UsedBMI >= low and UsedBMI < high
 
 // Queries intended to directly align with the information concepts defined by the clinical guidelines
 
@@ -147,17 +141,17 @@ define IsTier1b :
   and(HasBMIOver(27.0 'kg/m2'))
 
 define IsTier2a :
-  (Count(WeightRelatedConditions())>= 3
+  (Count(AllWeightRelatedConditions)>= 3
     or exists [Condition: "HeartFailureWithPreservedEjectionFraction"]
   )
   and(HasBMIOver(27.0 'kg/m2'))
 
 define IsTier2b :
-  Count(WeightRelatedConditions())>= 2
+  Count(AllWeightRelatedConditions)>= 2
   and(HasBMIOver(27.0 'kg/m2'))
 
 define IsTier2c :
-  Count(WeightRelatedConditions())>= 2
+  Count(AllWeightRelatedConditions)>= 2
   and(HasBMIOver(27.0 'kg/m2'))
 
 define IsTier3 :
@@ -175,8 +169,13 @@ define MostRecentRecordedBMI :
 define ComputedBMI : 
 	ComputeBMIFromWeightAndHeight()
 
+
+// Uses the most recent explicitly recorded BMI observation if present,
+// with fallback to manual calculation based on recorded weight and height.
+// If neither are possible from available data, returns null.
 define UsedBMI :
-  BestBMI()
+	Coalesce(ComputeBMIFromWeightAndHeight(), RecordedBMI().value)
+ 
 
 // Comment this out if we don't need it.
 define AllWeightRelatedConditions:
